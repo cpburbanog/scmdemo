@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAI Simulation</title>
+</head>
+<body>
+    <h1>SAI Prediction Tool</h1>
+    <form method="POST">
+        <label>Particle Size Distribution (D50) (µm):</label><input type="number" step="0.01" name="psd_d50" required><br>
+        <label>NPSD:</label><input type="number" step="0.01" name="n_psd" required><br>
+        <label>SSAPSD:</label><input type="number" step="0.01" name="ssa_psd" required><br>
+        <label>Density (g/cm³):</label><input type="number" step="0.01" name="density" required><br>
+        <label>Amorphous Phase (%):</label><input type="number" step="0.01" name="amorphous_phase" required><br>
+        <label>SiO₂ (%):</label><input type="number" step="0.01" name="sio2" required><br>
+        <label>Al₂O₃ (%):</label><input type="number" step="0.01" name="al2o3" required><br>
+        <label>Fe₂O₃ (%):</label><input type="number" step="0.01" name="fe2o3" required><br>
+        <label>CaO (%):</label><input type="number" step="0.01" name="cao" required><br>
+        <label>Bound Water (g/100 g of dried paste) - 7d:</label><input type="number" step="0.01" name="bound_water" required><br>
+        <button type="submit">Predict SAI</button>
+    </form>
+
+    {% if prediction_28 and prediction_90 %}
+    <h2>Predictions:</h2>
+    <p>SAI (28 days): {{ prediction_28 }} %</p>
+    <p>SAI (90 days): {{ prediction_90 }} %</p>
+    {% endif %}
+</body>
+</html>
