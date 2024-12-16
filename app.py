@@ -1,5 +1,6 @@
+import os
 from flask import Flask, render_template, request
-import random  # Simularemos resultados aleatorios, sustituye con tu modelo real
+import random
 
 app = Flask(__name__)
 
@@ -20,11 +21,14 @@ def index():
         cao = float(request.form['cao'])
         bound_water = float(request.form['bound_water'])
 
-        # Simula predicciones (aqui deberías insertar tu modelo predictivo)
-        prediction_28 = round(random.uniform(50, 100), 2)  # Ejemplo: simula entre 50-100%
+        # Simula predicciones
+        prediction_28 = round(random.uniform(50, 100), 2)
         prediction_90 = round(random.uniform(70, 120), 2)
 
     return render_template('index.html', prediction_28=prediction_28, prediction_90=prediction_90)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Obtener el puerto asignado por Render
+    port = int(os.environ.get("PORT", 5000))  # Usa 5000 si PORT no está definido
+    app.run(host='0.0.0.0', port=port)
+
